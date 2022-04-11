@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+option go_package = "./proto";
+
+
+service SpuSrv {
+        rpc GetAll(google.protobuf.Empty) returns (Spus){};
+        rpc Create(CreateSpu) returns (google.protobuf.Empty){};
+}
+
+message SpuDetail {
+        int32 id = 1;
+        int32 title = 2;
+        string sub_title = 3;
+        int32 category_id = 4;
+        int32 spg_id = 5;
+        bool saleable = 6;
+        bool valid = 7;
+}
+message Spus {
+        repeated SpuDetail spus = 1;
+}
+
+message CreateSpu{
+        string title = 1;
+        string sub_title = 2;
+        int32 category_id = 3;
+        int32 spg_id =4;
+        bool saleable = 5;
+        bool valid = 6;
+}

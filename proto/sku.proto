@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+option go_package = "./proto";
+
+
+service SkuSrv {
+        rpc GetAll(google.protobuf.Empty) returns (SkuDetails){};
+        rpc Create(CreateSku) returns (google.protobuf.Empty){};
+}
+
+message SkuDetail {
+        int32 id = 1;
+        string title = 2;
+        int32 spg_id = 3;
+        repeated string image = 4;
+        float price = 5 ;
+        repeated string param = 6;
+        bool saleable = 7;
+        bool valid = 8;
+}
+message SkuDetails {
+        repeated SkuDetail skus = 1;
+}
+
+message CreateSku {
+        string title = 1;
+        int32 spg_id = 2;
+        repeated string image = 3;
+        float price = 4;
+        string param =5;
+        bool salebale = 6;
+        bool valid =7;
+}

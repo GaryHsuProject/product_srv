@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+option go_package = "./proto";
+
+
+service SpecGroupSrv {
+        rpc GetAll(google.protobuf.Empty) returns (SpecGroups){};
+        rpc Create(CreateSpecGroup) returns (google.protobuf.Empty){};
+}
+
+message SpecGroupDetail {
+        int32 id = 1;
+        int32 spg_id = 2;
+        string name = 3;
+}
+message SpecGroups {
+        repeated SpecGroupDetail spec_group = 1;
+}
+
+message CreateSpecGroup {
+        int32 spg_id = 1;
+        string name = 2;
+}
